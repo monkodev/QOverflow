@@ -1,4 +1,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
+.logo {
+	height:50px;
+	width: 130px;
+	margin-top: 5px;
+}
+.botones-a {
+	margin-top: 15px;
+}
+.botones-b {
+	background-color: black;
+	color: white;
+	font-weight: bold;
+	text-shadow: rgba(192,168,2,0.5);
+}
