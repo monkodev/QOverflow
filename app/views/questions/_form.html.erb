@@ -1,0 +1,51 @@
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+  	<div class="navbar-form navbar-left">
+  		<img class="logo" src="<%= image_url "qoverflow_logo.png" %>">
+  	</div>
+    <form class="navbar-form navbar-right" role="search">
+    <% if user_signed_in? %>
+      <a class="btn btn-default botones-a botones-b" role="button" href="<%= destroy_user_session_path %>">Salir del Sistema</a>
+    <% else %>
+        <a class="btn btn-default botones-a botones-b" role="button" href="<%= new_user_session_path %>">Ingresar</a>
+        <a class="btn btn-default botones-a botones-b" role="button" href="<%= new_user_registration_path %>">Registrarse</a>
+    <% end %>
+    	
+      <div class="form-group">
+        <input type="text" class="form-control botones-a" placeholder="Buscar">
+      </div>     
+    </form>
+  </div>
+</nav>
+<div class="container">
+	<div class="row">
+	<p><a class="btn btn-primary btn-sm" href="/" role="button">Volver</a></p>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3">
+			<h1 class="centrado"><%= @question.new_record? ? "Nuevo": "Editar" %> Pregunta</h1>
+
+				<% if @question.errors.any? %>
+				  <div class="alert alert-danger">
+				    <ul>
+				    <% @question.errors.full_messages.each do |msg| %>
+				      <li><%= msg %></li>
+				    <% end %>
+				    </ul>
+				  </div>
+				<% end %>
+				<%= form_for @question do |p| %>
+				       <div class="form-group">
+				         <%= p.text_field :titulo, class: 'form-control input-lg', placeholder: "Título del Post" %>
+				       </div>
+
+				       <div class="form-group">
+				         <%= p.text_area :texto, class: 'form-control input-lg', placeholder: "Descripción", rows: "10" %>
+				       </div>
+				       <div class="actions text-right">
+				                 <%= p.submit @question.new_record? ? "Nueva Pregunta" : "Editar Pregunta", class: "btn btn-primary btn-lg btn-block" %>
+				        </div>
+				<% end %>
+		</div>  		
+	</div>
+</div>
