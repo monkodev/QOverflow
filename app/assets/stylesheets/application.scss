@@ -7,7 +7,7 @@
 	margin-top: 5px;
 }
 .logo1 {
-	height:70px;
+	height:60px;
 	width: 260px;
 	margin-top: 1px;
 	margin-bottom: 10px;
@@ -16,7 +16,7 @@
 	height:60px;
 	width: 60px;
 	margin-top: auto;
-	margin-left:40px;
+	
 }
 .botones-a {
 	margin-top: 15px;
@@ -36,7 +36,26 @@
 }
 .style_text_title {
 	font-weight: bold;
-	color: #3573d6;
-	text-decoration: underline;
+	color: #879ec4;
 	text-shadow: skyblue 0px 0px 0px 4px; 
+}
+.pregunta {
+	margin-left:50px;
+}
+.piecito {
+	color: blue;
+	text-align:center;
+	height:30px;
+	padding:0px;
+}
+.logofondo {
+	height:20px;
+}
+.navbar-fixed-bottom{
+    height:70px;
+    position:relative;
+    vertical-align:middle;
+}
+.blankspace {
+	height:70px;
 }
