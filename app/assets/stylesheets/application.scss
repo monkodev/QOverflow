@@ -6,6 +6,18 @@
 	width: 130px;
 	margin-top: 5px;
 }
+.logo1 {
+	height:70px;
+	width: 260px;
+	margin-top: 1px;
+	margin-bottom: 10px;
+}
+.logo2 {
+	height:60px;
+	width: 60px;
+	margin-top: auto;
+	margin-left:40px;
+}
 .botones-a {
 	margin-top: 15px;
 }
@@ -14,4 +26,17 @@
 	color: white;
 	font-weight: bold;
 	text-shadow: rgba(192,168,2,0.5);
+}
+.titulo_index {
+	font-weight: bold;
+	font-size: 26px;	
+  	text-shadow: skyblue 0px 0px 0px 4px;  
+	color: #3573d6;
+	height: 16px;
+}
+.style_text_title {
+	font-weight: bold;
+	color: #3573d6;
+	text-decoration: underline;
+	text-shadow: skyblue 0px 0px 0px 4px; 
 }

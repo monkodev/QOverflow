@@ -5,7 +5,7 @@
   	</div>
     <form class="navbar-form navbar-right" role="search">
     <% if user_signed_in? %>
-      <a class="btn btn-default botones-a botones-b" role="button" href="<%= destroy_user_session_path %>">Salir del Sistema</a>
+      <a class="btn btn-default botones-a botones-b" role="button" href="<%= url_for(destroy_user_session_path)%>" data-method="delete"> Salir del Sistema</a>
     <% else %>
         <a class="btn btn-default botones-a botones-b" role="button" href="<%= new_user_session_path %>">Ingresar</a>
         <a class="btn btn-default botones-a botones-b" role="button" href="<%= new_user_registration_path %>">Registrarse</a>
@@ -23,7 +23,7 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-6 col-sm-offset-3">
-			<h1 class="centrado"><%= @question.new_record? ? "Nuevo": "Editar" %> Pregunta</h1>
+			<h1 class="centrado"><%= @question.new_record? ? "Publicar": "Editar" %> Pregunta</h1>
 
 				<% if @question.errors.any? %>
 				  <div class="alert alert-danger">
@@ -36,11 +36,11 @@
 				<% end %>
 				<%= form_for @question do |p| %>
 				       <div class="form-group">
-				         <%= p.text_field :titulo, class: 'form-control input-lg', placeholder: "Título del Post" %>
+				         <%= p.text_field :titulo, class: 'form-control input-lg', placeholder: "Escribe el título de la pregunta" %>
 				       </div>
 
 				       <div class="form-group">
-				         <%= p.text_area :texto, class: 'form-control input-lg', placeholder: "Descripción", rows: "10" %>
+				         <%= p.text_area :descripcion, class: 'form-control input-lg', placeholder: "Expresa claramente tu pregunta ...", rows: "10" %>
 				       </div>
 				       <div class="actions text-right">
 				                 <%= p.submit @question.new_record? ? "Nueva Pregunta" : "Editar Pregunta", class: "btn btn-primary btn-lg btn-block" %>

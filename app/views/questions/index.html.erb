@@ -5,7 +5,7 @@
   	</div>
     <form class="navbar-form navbar-right" role="search">
     <% if user_signed_in? %>
-      <a class="btn btn-default botones-a botones-b" role="button" href="<%= destroy_user_session_path %>">Salir del Sistema</a>
+      <a class="btn btn-default botones-a botones-b" role="button" href="<%= url_for(destroy_user_session_path)%>" data-method="delete"> Salir del Sistema</a>
     <% else %>
         <a class="btn btn-default botones-a botones-b" role="button" href="<%= new_user_session_path %>">Ingresar</a>
         <a class="btn btn-default botones-a botones-b" role="button" href="<%= new_user_registration_path %>">Registrarse</a>
@@ -20,33 +20,58 @@
 
 <div class="container">
   <div class="row">
-      <h3> Tablero de Preguntas </h3>
+      <img class="logo1" src="<%= image_url "preguntas.png" %>">
+      
        <div class="pull-right" style="margin-right: 60px;">
        <p><a class="btn btn-primary" href="/questions/new" role="button">Ingresar una pregunta</a></p>
        </div> 
-  </div>  
+  </div> 
+
+ <table class="table">
   <% @question.each do |q| %>
-  <div class="row">
-    <div class="col-sm-3 col-sm-offset-2">
-      Col 1
-
-    </div>
-    <div class="col-sm-3 col-sm-offset-1">
-      Col 2
-
-    </div>
-    <div class="col-sm-3 col-sm-offset-1">
-      Col 3
-
-    </div>
-  </div>
-<% end %>
-       
+  
+    <tr>
+      <td> 0
+      <p><h4><small>Votos</small></h4></p>
+      </td>
+      <td> 0
+      <p><h4><small>
+      Respuestas</small></h4></p>
+      </td>
+      <td><h4> <%= link_to q.titulo, q %> </h4>
+        <p>
+          <h4><small>Preguntó <%= q.user.email %> hace <% dife = (Time.now - q.created_at).to_i %>
+          <% if (dife > 31536000) %>
+            <%= (dife/31536000).to_i %> años
+          <% else %>
+            <% if (dife > 2592000) %>
+              <%= (dife/2592000).to_i %> meses
+              <% else %>
+                <% if (dife > 86400) %>
+                  <%= (dife/86400).to_i %> días
+                  <% else %>
+                  <% if (dife > 3600) %>
+                    <%= (dife/3600).to_i %> horas
+                  <% else %>
+                    <% if (dife > 60) %>
+                    <%= (dife/60).to_i %> minutos
+                    <% else %>
+                    <%= dife %> segundos
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% end %>
+          <% end %>
           
-
-
-
-
+          </small></h4>
+        </p>
+      </td>
+    </tr>
+  
+<% end %>
+</table>
       
+          
+     
   
 </div>

@@ -1,0 +1,34 @@
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+  	<div class="navbar-form navbar-left">
+  		<img class="logo" src="<%= image_url "qoverflow_logo.png" %>">
+  	</div>
+    <form class="navbar-form navbar-right" role="search">
+    <% if user_signed_in? %>
+      <a class="btn btn-default botones-a botones-b" role="button" href="<%= url_for(destroy_user_session_path)%>" data-method="delete"> Salir del Sistema</a>
+    <% else %>
+        <a class="btn btn-default botones-a botones-b" role="button" href="<%= new_user_session_path %>">Ingresar</a>
+        <a class="btn btn-default botones-a botones-b" role="button" href="<%= new_user_registration_path %>">Registrarse</a>
+    <% end %>
+    	
+      <div class="form-group">
+        <input type="text" class="form-control botones-a" placeholder="Buscar">
+      </div>     
+    </form>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+  <p><a class="btn btn-primary btn-sm" href="/" role="button">Volver</a></p>
+  </div>
+  <div class="row">
+    <div class="col-sm-10">
+      <h3 class="style_text_title"><img class="logo2" src="<%= image_url "brain.png" %>"><%= @question.titulo %></h3>
+
+
+        
+       
+        
+    </div>      
+  </div>
+</div>
