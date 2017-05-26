@@ -1,3 +1,22 @@
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-form navbar-left">
+      <img class="logo" src="<%= image_url "qoverflow_logo.png" %>">
+    </div>
+    <form class="navbar-form navbar-right" role="search">
+    <% if user_signed_in? %>
+      <a class="btn btn-default botones-a botones-b" role="button" href="<%= url_for(destroy_user_session_path)%>" data-method="delete"> Salir del Sistema</a>
+    <% else %>
+        <a class="btn btn-default botones-a botones-b" role="button" href="<%= new_user_session_path %>">Ingresar</a>
+        <a class="btn btn-default botones-a botones-b" role="button" href="<%= new_user_registration_path %>">Registrarse</a>
+    <% end %>
+      
+      <div class="form-group">
+        <input type="text" class="form-control botones-a" placeholder="Buscar">
+      </div>     
+    </form>
+  </div>
+</nav>
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -24,3 +43,10 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="piecito">
+    <p>____________________________________________</p>
+  <p><a href="http://www.monkodev.com" target="_blank"><img class="logofondo" src="<%= image_url "monkodevlogo.png" %>"> Powered by Monkodev.com</a></p>
+  </div>
+</nav>

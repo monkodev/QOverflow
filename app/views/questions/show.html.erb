@@ -38,7 +38,7 @@
       <% if signed_in? %>
         <%= form_for [@question, @question.comequestion.build] do |f| %>
           <div class="form-group pregunta">
-            <%= f.text_area :descripcion, class: "form-control", placeholder: "Ingrese comentario" %>
+            <%= f.text_area :descripcion, class: "form-control", placeholder: "Ingresa tu comentario ..." %>
           </div>
 
           <div class="actions text-right">
@@ -46,6 +46,31 @@
           </div>
         <% end %>
 <% end %>  
+      <div class="blankspace2"></div>
+      <div class="panel panel-default pregunta">
+        <div class="panel-heading blankspace3">
+        <div class="col-sm-4">
+          <strong>0 Respuesta(s)</strong>
+        </div>
+        <div class="col-sm-8 right_side">
+            Contribuye con tu conocimiento  ...  <span class="label label-danger">Responde ya esta pregunta!</span>
+        </div></div>
+      </div>
+          <% @question.answer.each do |ca| %>
+             <div class="panel pregunta"><%= ca.descripcion %> <small>respondió <%= ca.user.email %></small></div>    
+            <% end %> 
+          <% if signed_in? %>
+              <%= form_for [@question, @question.answer.build] do |f| %>
+              <div class="form-group pregunta">
+                  <%= f.text_area :descripcion, class: "form-control", placeholder: "Ingresa tu respuesta ..." %>
+              </div>
+
+              <div class="actions text-right">
+                  <%= f.submit "Publicar respuesta", class: "btn btn-primary" %>
+              </div>
+              <% end %>
+          <% end %>  
+      
       <div class="blankspace"></div>
     </div>      
   </div>
