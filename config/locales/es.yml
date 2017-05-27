@@ -1,0 +1,27 @@
+
+es:
+  errors:
+    messages:
+      blank: "no puede estar en blanco"
+      invalid: "es inválido"
+      too_short: "es demasiado corto (mínimo 6 caracteres)"
+
+  activerecord:
+    attributes:
+      user:
+        name: "Nombre"
+        password: "Contraseña"
+        email: "Correo electrónico"
+        remember_me: "Recordarme"
+        password_confirmation: "Confirme contraseña"
+    errors:
+        messages:
+          not_saved: "No se grabó el registro"
+          taken: "Ya existe un usuario con ese e-mail"
+          confirmation: "Las contraseñas ingresadas no coinciden"
+  devise:
+    sessions:
+      signed_in: 'Bienvenido! Ha ingresado correctamente.'
+      signed_out: 'Hasta Luego! Ha salido correctamente.'
+    registrations:  
+      signed_up: 'Hola! Te has registrado correctamente....Disfruta QOverflow!!'

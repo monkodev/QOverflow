@@ -4,22 +4,33 @@
       <img class="logo" src="<%= image_url "qoverflow_logo.png" %>">
     </div>
     <form class="navbar-form navbar-right" role="search">
-    <% if user_signed_in? %>
-      <a class="btn btn-default botones-a botones-b" role="button" href="<%= url_for(destroy_user_session_path)%>" data-method="delete"> Salir del Sistema</a>
-    <% else %>
-        <a class="btn btn-default botones-a botones-b" role="button" href="<%= new_user_session_path %>">Ingresar</a>
-        <a class="btn btn-default botones-a botones-b" role="button" href="<%= new_user_registration_path %>">Registrarse</a>
-    <% end %>
-      
-      <div class="form-group">
-        <input type="text" class="form-control botones-a" placeholder="Buscar">
-      </div>     
+
+        <a class="btn btn-default botones-a botones-b" role="button" href="<%= root_path %>">
+        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>  Volver</a>
+
     </form>
   </div>
 </nav>
-<h2>Log in</h2>
-
+<div class="row">
+<div class="col-md-4 col-md-offset-4 centrado">
+  <div class="estilo_title centrado"><h2>Ingresar</h2></div>
+<div class="errors">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <% flash.each do |name, msg| %>
+
+                      
+                      <% if msg.class == Array %>
+                        <% msg.each do |message| %>
+                          <%= content_tag :div, message, :id => "flash_#{name}" %>
+                        <% end %>
+                      <% else %>
+
+                       
+                        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+
+                      <% end %> 
+  <% end %>
+   </div>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
@@ -37,13 +48,16 @@
     </div>
   <% end -%>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="actions centrado">
+    <%= f.submit "Entrar" , class: "btn btn-primary"%>
   </div>
+  <div class="blankspace2"></div>
 <% end %>
 
 <%= render "devise/shared/links" %>
-
+</div>
+</div>
+<div class="blankspace"></div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="piecito">
     <p>____________________________________________</p>
