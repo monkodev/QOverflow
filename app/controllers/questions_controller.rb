@@ -2,6 +2,11 @@ class QuestionsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 	def index
 		@question=Question.order(created_at: :desc)
+		if params[:search]
+			@question=Question.search(params[:search]).order(created_at: :desc)
+		else
+			@question=Question.order(created_at: :desc)
+		end
 	end
 	def new
 		@question = current_user.questions.build

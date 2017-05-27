@@ -11,9 +11,7 @@
         <a class="btn btn-default botones-a botones-b" role="button" href="<%= new_user_registration_path %>">Registrarse</a>
     <% end %>
     	
-      <div class="form-group">
-        <input type="text" class="form-control botones-a" placeholder="Buscar">
-      </div>     
+      
     </form>
   </div>
 </nav>
@@ -38,7 +36,7 @@
 				       <div class="form-group">
 				         <%= p.text_field :titulo, class: 'form-control input-lg', placeholder: "Escribe el título de la pregunta" %>
 				       </div>
-
+				
 				       <div class="form-group">
 				         <%= p.text_area :descripcion, class: 'form-control input-lg', placeholder: "Expresa claramente tu pregunta ...", rows: "10" %>
 				       </div>
