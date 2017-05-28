@@ -14,6 +14,16 @@ es:
         email: "Correo electrónico"
         remember_me: "Recordarme"
         password_confirmation: "Confirme contraseña"
+      question:
+        titulo: "Título"
+        descripcion: "Descripción"
+      answer: 
+        titulo: "Título"
+        descripcion: "Descripción"
+      comeanswer: 
+        descripcion: "Descripción"  
+      comequestion:
+        descripcion: "Descripción"
     errors:
         messages:
           not_saved: "No se grabó el registro"

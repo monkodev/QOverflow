@@ -1,4 +1,6 @@
 class Question < ApplicationRecord
+	validates :titulo, presence: true
+	validates :descripcion, presence: true
 	belongs_to :user
 	has_many :answer
 	has_many :comequestion
