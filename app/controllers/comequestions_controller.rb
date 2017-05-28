@@ -3,7 +3,7 @@ class ComequestionsController < ApplicationController
 	def create
 		question = Question.find(params[:question_id])
   		question.comequestion.create(comequestion_params)
-
+  		
   		redirect_to question
 	end
 	

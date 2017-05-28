@@ -37,7 +37,7 @@
           <div class="form-group pregunta">
             <%= f.text_area :descripcion, class: "form-control", placeholder: "Ingresa tu comentario ..." %>
           </div>
-
+         
           <div class="actions text-right">
             <%= f.submit "Comentar", class: "btn btn-primary" %>
           </div>
@@ -47,7 +47,7 @@
       <div class="panel panel-default pregunta">
         <div class="panel-heading blankspace3">
         <div class="col-sm-4">
-          <strong>0 Respuesta(s)</strong>
+          <strong><%= @question.answer.count %> Respuesta(s)</strong>
         </div>
         <div class="col-sm-8 right_side">
             Contribuye con tu conocimiento  ...  <span class="label label-danger">Responde ya esta pregunta!</span>

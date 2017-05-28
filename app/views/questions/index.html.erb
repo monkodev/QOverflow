@@ -35,11 +35,11 @@
   <% @question.each do |q| %>
   
     <tr>
-      <td> 0
-      <p><h4><small>Votos</small></h4></p>
+      <td><h4 class="orange"> <%= q.answer.count %></h4>
+      <p><h4 class="centrado"><small>Votos</small></h4></p>
       </td>
-      <td> 0
-      <p><h4><small>
+      <td><h4 class="orange"><%= q.answer.count %></h4> 
+      <p><h4 class="centrado"><small>
       Respuestas</small></h4></p>
       </td>
       <td><h4> <%= link_to q.titulo, q %> </h4>
