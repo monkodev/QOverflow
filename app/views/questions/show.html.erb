@@ -24,16 +24,26 @@
     <div class="panel-title">
       <h3 class="style_text_title"><img class="logo2" src="<%= image_url "brain.png" %>"><%= @question.titulo %></h3>
       </div>
-      <div class="pregunta">
-      <h5><p><strong><%= @question.descripcion %></strong></p></h5>
-      <footer class="blockquote-footer"><small> Preguntó <%= @question.user.email %> el <%= @question.created_at.strftime("%d/%m/%Y a las %I:%M%p") %></small></footer>
+      <div class="row">
+        <div class="col-sm-1 pregunta5 centrado">
+        
+        </div>
+         <div class="col-sm-9">
+            <h5><p><strong><%= @question.descripcion %></strong></p></h5>
+            <footer class="blockquote-footer"><small> Preguntó <%= @question.user.email %> el <%= @question.created_at.strftime("%d/%m/%Y a las %I:%M%p") %></small></footer>
+          </div>
       </div>
+      
+     
       </div> 
-      <% @question.comequestion.each do |cq| %>
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-11 pregunta">
+           <% @question.comequestions.each do |cq| %>
         <div class="panel pregunta"><%= cq.descripcion %> <small>comentó <%= cq.user.email %></small></div>    
       <% end %> 
       <% if signed_in? %>
-        <%= form_for [@question, @question.comequestion.build] do |f| %>
+        <%= form_for [@question, @question.comequestions.build] do |f| %>
           <div class="form-group pregunta">
             <%= f.text_area :descripcion, class: "form-control", placeholder: "Ingresa tu comentario ..." %>
           </div>
@@ -42,22 +52,25 @@
             <%= f.submit "Comentar", class: "btn btn-primary" %>
           </div>
         <% end %>
-<% end %>  
+      <% end %>  
+        </div>
+      </div>
+     
       <div class="blankspace2"></div>
       <div class="panel panel-default pregunta">
         <div class="panel-heading blankspace3">
         <div class="col-sm-4">
-          <strong><%= @question.answer.count %> Respuesta(s)</strong>
+          <strong><%= @question.answers.count %> Respuesta(s)</strong>
         </div>
         <div class="col-sm-8 right_side">
             Contribuye con tu conocimiento  ...  <span class="label label-danger">Responde ya esta pregunta!</span>
         </div></div>
       </div>
-          <% @question.answer.each do |ca| %>
+          <% @question.answers.each do |ca| %>
              <div class="panel pregunta"><%= ca.descripcion %> <small>respondió <%= ca.user.email %></small></div>    
             <% end %> 
           <% if signed_in? %>
-              <%= form_for [@question, @question.answer.build] do |f| %>
+              <%= form_for [@question, @question.answers.build] do |f| %>
               <div class="form-group pregunta">
                   <%= f.text_area :descripcion, class: "form-control", placeholder: "Ingresa tu respuesta ..." %>
               </div>

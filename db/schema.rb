@@ -71,6 +71,24 @@ ActiveRecord::Schema.define(version: 20170320174748) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "voteanswers", force: :cascade do |t|
+    t.integer  "answer_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_voteanswers_on_answer_id", using: :btree
+    t.index ["user_id"], name: "index_voteanswers_on_user_id", using: :btree
+  end
+
+  create_table "votequestions", force: :cascade do |t|
+    t.integer  "question_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["question_id"], name: "index_votequestions_on_question_id", using: :btree
+    t.index ["user_id"], name: "index_votequestions_on_user_id", using: :btree
+  end
+
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
   add_foreign_key "comeanswers", "answers"
@@ -78,4 +96,8 @@ ActiveRecord::Schema.define(version: 20170320174748) do
   add_foreign_key "comequestions", "questions"
   add_foreign_key "comequestions", "users"
   add_foreign_key "questions", "users"
+  add_foreign_key "voteanswers", "answers"
+  add_foreign_key "voteanswers", "users"
+  add_foreign_key "votequestions", "questions"
+  add_foreign_key "votequestions", "users"
 end
