@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   		resources :answers, only:[:create]
   		resources :comequestions
   		resources :comeanswers
+  		resources :voteanswers
+  		resources :votequestions
   	end
   	root 'questions#index'
 end
