@@ -1,16 +1,16 @@
-class VoteAnswersController < ApplicationController
+class VoteanswersController < ApplicationController
 	def create
-	  answer = Answer.find(params[:answer_id])
-	  answer.votes.create(user: current_user)
+	  answer = Answer.find(params[:question_id])
+	  answer.voteanswers.create(user: current_user)
 
-	  redirect_to root_path
+	  redirect_to :back
 	end
 
 	def destroy
-	  answer = Answer.find(params[:answer_id])
-	  answer.votes.where(user: current_user).take.try(:destroy)
+	  answer = Answer.find(params[:question_id])
+	  answer.voteanswers.where(user: current_user).take.try(:destroy)
 
-	  redirect_to root_path
+	   redirect_to :back
 	end
 	
 end

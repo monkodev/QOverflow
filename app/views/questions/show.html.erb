@@ -26,10 +26,22 @@
       </div>
       <div class="row">
         <div class="col-sm-1 pregunta5 centrado">
-        
+
+          <% if @question.qvotada? current_user %>
+                      <%= link_to question_votequestion_path(@question), method: :delete, class: "product-upvote upvote-active" do %>
+                        <span class="upvote-arrow"></span>
+                        <span class="upvote-count"><%= @question.votequestions.count %></span>
+                      <% end %>
+                    <% else %>
+                      <%= link_to question_votequestions_path(@question), method: :post, class: "product-upvote" do %>
+                        <span class="upvote-arrow"></span>
+                        <span class="upvote-count"><%= @question.votequestions.count %></span>
+                      <% end %>
+          <% end %>
+
         </div>
          <div class="col-sm-9">
-            <h5><p><strong><%= @question.descripcion %></strong></p></h5>
+            <h5><p>markdown.render(<%= @question.descripcion %>)</p></h5>
             <footer class="blockquote-footer"><small> Preguntó <%= @question.user.email %> el <%= @question.created_at.strftime("%d/%m/%Y a las %I:%M%p") %></small></footer>
           </div>
       </div>
@@ -66,9 +78,26 @@
             Contribuye con tu conocimiento  ...  <span class="label label-danger">Responde ya esta pregunta!</span>
         </div></div>
       </div>
+      <div class="row">
           <% @question.answers.each do |ca| %>
-             <div class="panel pregunta"><%= ca.descripcion %> <small>respondió <%= ca.user.email %></small></div>    
+            <div class="col-sm-1 pregunta">
+              
+              <% if ca.avotada? current_user %>
+                      <%= link_to question_voteanswer_path(ca), method: :delete, class: "product-upvote upvote-active" do %>
+                        <span class="upvote-arrow"></span>
+                        <span class="upvote-count"><%= ca.voteanswers.count %></span>
+                      <% end %>
+                    <% else %>
+                      <%= link_to question_voteanswers_path(ca), method: :post, class: "product-upvote" do %>
+                        <span class="upvote-arrow"></span>
+                        <span class="upvote-count"><%= ca.voteanswers.count %></span>
+                      <% end %>
+          <% end %>
+            </div>
+             <div class="col-sm-9 panel altox"><%= ca.descripcion %> <small>respondió <%= ca.user.email %></small></div>    
             <% end %> 
+
+            </div>
           <% if signed_in? %>
               <%= form_for [@question, @question.answers.build] do |f| %>
               <div class="form-group pregunta">
