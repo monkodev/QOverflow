@@ -41,7 +41,8 @@
 
         </div>
          <div class="col-sm-9">
-            <h5><p>markdown.render(<%= @question.descripcion %>)</p></h5>
+            <p><%= markdown(@question.descripcion) %></p>
+
             <footer class="blockquote-footer"><small> Preguntó <%= @question.user.email %> el <%= @question.created_at.strftime("%d/%m/%Y a las %I:%M%p") %></small></footer>
           </div>
       </div>
@@ -94,10 +95,17 @@
                       <% end %>
           <% end %>
             </div>
-             <div class="col-sm-9 panel altox"><%= ca.descripcion %> <small>respondió <%= ca.user.email %></small></div>    
+             <div class="col-sm-10 panel">
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                        <%= markdown(ca.descripcion) %> <small>respondió <%= ca.user.email %></small>
+                    </div>
+                  </div>
+             </div>    
             <% end %> 
 
             </div>
+          
           <% if signed_in? %>
               <%= form_for [@question, @question.answers.build] do |f| %>
               <div class="form-group pregunta">
@@ -109,7 +117,7 @@
               </div>
               <% end %>
           <% end %>  
-      
+    
       <div class="blankspace"></div>
     </div>      
   </div>
