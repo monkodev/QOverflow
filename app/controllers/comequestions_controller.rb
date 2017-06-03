@@ -2,9 +2,13 @@ class ComequestionsController < ApplicationController
 		
 	def create
 		question = Question.find(params[:question_id])
-  		question.comequestions.create(comequestion_params)
+  		h=question.comequestions.create(comequestion_params)
+  		if h.save
+  			redirect_to question
+  		else
+  			redirect_to question, alert: "ERROR: Comentario vacío!"
+		end
   		
-  		redirect_to question
 	end
 	
 	

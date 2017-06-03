@@ -11,6 +11,7 @@ es:
       user:
         name: "Nombre"
         password: "Contraseña"
+        encrypted_password: "Contraseña"
         email: "Correo electrónico"
         remember_me: "Recordarme"
         password_confirmation: "Confirme contraseña"
