@@ -1,5 +1,6 @@
 class Answer < ApplicationRecord
-	validates :descripcion, presence: true
+	validates :descripcion, presence: { message: "Respuesta vacía!"}
+	validates :descripcion, :presence => {:message => "Usted debe ingresar una descripción"}
 	belongs_to :user
 	belongs_to :question
 	has_many :comeanswers

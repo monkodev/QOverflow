@@ -21,7 +21,11 @@
     </form>
   </div>
 </nav>
-
+<% flash.each do |name, msg| -%>
+<div class="alert alert-success">
+      <%= content_tag :div, msg, class: name %>
+</div>
+<% end -%>
 <div class="container">
   <div class="row">
       <img class="logo1" src="<%= image_url "preguntas.png" %>">
